@@ -1,6 +1,4 @@
 import {useState} from 'react';
-import '../App.css'
-
 
 const Bookshelf = () => {
     const [books, setBooks] = useState ([
@@ -14,30 +12,36 @@ const [newBook, setNewBook] = useState ({
 });
 
 const handleInputChange =(event) => {
-    setNewBook({...newBook, [eve.target.title]: event.target.value})
+    setNewBook({...newBook, [event.target.name]: event.target.value});
+}
+
+const handleSubmit = (event) => {
+    event.preventDefault(); 
+    setBooks((prevBooks) => [...prevBooks, newBook]);
+    setNewBook({title:'', author:''});
 }
 
     return (
         <div className="bookshelfDiv">
             <div className="formDiv">
                 <h3>Add a Book</h3>
-                {/* <form onSubmit={handleSubmit}> */}
-                <form>
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="title">Title:</label>
                 <input 
                 id="title"
                 name="title"
-                // value={newBook.title}
-                // onChange={handleChange}
+                value={newBook.title}
+                onChange={handleInputChange}
                 />
                 <br />
                 <label htmlFor="author">Author:</label>
                 <input 
                 id="author"
                 name="author"
-                // value={newBook.author}
-                // onChange={handleChange}
+                value={newBook.author}
+                onChange={handleInputChange}
                 />
+                <br />
                 <button type="submit">Add Book</button>
                 </form>
                 </div>
