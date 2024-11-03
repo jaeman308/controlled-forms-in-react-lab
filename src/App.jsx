@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import BookShelf from './component/Bookshelf'
+import Bookshelf from './component/Bookshelf.jsx'
 
 const App = () => {
 
