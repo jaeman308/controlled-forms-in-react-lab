@@ -1,10 +1,7 @@
 import {useState} from 'react';
 
 const Bookshelf = () => {
-    const [books, setBooks] = useState ([
-        {title: 'Fourth Wing', author: 'Rebecca Yarros'},
-        {title: 'The Lion, the Witch and the Wardrobe', author : 'C.S. Lewis'},
-    ])
+    const [books, setBooks] = useState ([])
 
 const [newBook, setNewBook] = useState ({
     title: '',
@@ -17,7 +14,7 @@ const handleInputChange =(event) => {
 
 const handleSubmit = (event) => {
     event.preventDefault(); 
-    setBooks((prevBooks) => [...prevBooks, newBook]);
+    setBooks([...books, newBook]);
     setNewBook({title:'', author:''});
 }
 
